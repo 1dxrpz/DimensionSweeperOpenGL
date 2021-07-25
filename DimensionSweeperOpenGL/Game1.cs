@@ -25,7 +25,7 @@ namespace DimensionSweeperOpenGL
 			AllocConsole();
 			_graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
-			IsMouseVisible = false;
+			IsMouseVisible = true;
 		}
 		protected override void Initialize()
 		{
@@ -127,8 +127,12 @@ namespace DimensionSweeperOpenGL
 				Console.WriteLine(Light.Rotation);
 				Console.WriteLine(-Vector3.Normalize(Vector3.Cross(p4, p5)).ScalarMultiply(Light.Rotation));
 			}
-			
-			
+			if (Keyboard.GetState().GetPressedKeyCount() > 0)
+			{
+				//Console.WriteLine(Camera.Position);
+				//Console.WriteLine(new Vector3(0, 100, 0).WorldToViewport(Camera).X);
+				//Console.WriteLine(new Vector3(0, 100, 0).WorldToViewport(Camera).Y);
+			}
 			if (Keyboard.GetState().IsKeyDown(Keys.Z))
 			{
 				Camera.LookDirection.X += Camera.MouseDelta.Y;
@@ -148,19 +152,6 @@ namespace DimensionSweeperOpenGL
 
 
 			cube.Update();
-			// DrawEdge(Vertices[0], Vertices[1], Color.White);
-			// DrawEdge(Vertices[0], Vertices[3], Color.White);
-			// DrawEdge(Vertices[1], Vertices[2], Color.White);
-			// DrawEdge(Vertices[2], Vertices[3], Color.White);
-			// DrawEdge(Vertices[4], Vertices[5], Color.White);
-			// DrawEdge(Vertices[4], Vertices[6], Color.White);
-			// DrawEdge(Vertices[5], Vertices[7], Color.White);
-			// DrawEdge(Vertices[6], Vertices[7], Color.White);
-			// DrawEdge(Vertices[0], Vertices[6], Color.White);
-			// DrawEdge(Vertices[1], Vertices[4], Color.White);
-			// DrawEdge(Vertices[2], Vertices[5], Color.White);
-			// DrawEdge(Vertices[3], Vertices[7], Color.White);
-
 
 			DrawEdge(new Vector3(100, 0, 0), new Vector3(-100, 0, 0), Color.Red);
 			DrawEdge(new Vector3(0, 0, 100), new Vector3(0, 0, -100), Color.Blue);

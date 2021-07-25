@@ -145,7 +145,7 @@ namespace DimensionSweeperOpenGL.Engine
 		static public Vector3 WorldToViewport(this Vector3 vector, Camera camera)
 		{
 			Matrix tm = camera.TransformMatrix() * (MatrixVector(vector.Rotate(new Vector3(), camera.LookDirection)) + MatrixVector(camera.Position));
-
+			
 			return new Vector3(tm.M11 / tm.M41, tm.M21 / tm.M41, tm.M31 / tm.M41);
 		}
 	}
